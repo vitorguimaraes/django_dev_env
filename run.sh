@@ -64,6 +64,8 @@ pip freeze > requirements.txt
 django-admin startproject core .
 sudo mv settings.py core
 
+docker compose run api_service pip install -r requirements.txt
+
 # give owner files to user
 sudo chown -R $USER *
 
