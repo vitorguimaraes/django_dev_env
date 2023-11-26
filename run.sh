@@ -63,6 +63,7 @@ sudo mv settings.py core/
 virtualenv .venv --python=3.10.12
 source .venv/bin/activate
 pip install django djangorestframework djangorestframework-simplejwt django-filter psycopg2 python-decouple
+pip freeze > requirements.txt
 
 # give owner files to user
 sudo chown -R $USER *
