@@ -2,7 +2,7 @@ server:
 	sh -c "python manage.py runserver"
 
 app:
-	sh -c "django-admin startapp $(filter-out $@,$(MAKECMDGOALS))" 
+	sh -c "django-admin startapp apps/$(filter-out $@,$(MAKECMDGOALS))" 
 
 # app.test:
 # 	sh -c "MIX_ENV=test mix test $(filter-out $@,$(MAKECMDGOALS)) && \

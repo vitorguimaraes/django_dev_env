@@ -56,6 +56,7 @@ new_project_path="${parent_path}${project_name}"
 sudo mv $(pwd) $new_project_path
 
 sudo mkdir scripts
+mkdir apps
 sudo mv dev.sh scripts/
 sudo mv settings.py core/
 
