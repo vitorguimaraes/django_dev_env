@@ -33,8 +33,6 @@ fi
 
 read -p "What is the Project's Name? " project_name
 
-docker compose run --rm api_service sh -c "django-admin startproject core ."
-
 sudo chown -R $USER *
 
 # changes DB_NAME in .env file accordingly to project's name
@@ -58,12 +56,13 @@ sudo mv $(pwd) $new_project_path
 sudo mkdir scripts
 mkdir apps
 sudo mv dev.sh scripts/
-sudo mv settings.py core/
 
 virtualenv .venv --python=3.10.12
 source .venv/bin/activate
 pip install django djangorestframework djangorestframework-simplejwt django-filter psycopg2 python-decouple
 pip freeze > requirements.txt
+django-admin startproject core .
+sudo mv settings.py core
 
 # give owner files to user
 sudo chown -R $USER *
