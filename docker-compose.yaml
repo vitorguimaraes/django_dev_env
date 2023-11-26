@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  api_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${IMAGE_NAME}
+    container_name: ${CONTAINER_NAME}
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/app
+    restart: on-failure
+    environment:
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      PORT: ${API_PORT}
+    ports:
+      - "8000:${API_PORT}"
+    networks:
+      - django_net
+    depends_on:
+      - db_service
+
+  db_service:
+    image: postgres:alpine
+    container_name: ${DB_HOST}
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "${HOST_PORT}:${DB_PORT}"
+      # volumes:
+      # - ./data:/var/lib/postgresql/data
+    networks:
+      - django_net
+
+networks:
+  django_net:
+    name: django_net
+    driver: bridge
