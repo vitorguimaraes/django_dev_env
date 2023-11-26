@@ -4,10 +4,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apk add --no-cache make && \
-    apk add build-base libpq-dev && \
-    pip install --upgrade pip && \
-    pip install django djangorestframework \
-    djangorestframework-simplejwt django-filter psycopg2
+    apk add build-base libpq-dev 
 
 ENV APP_HOME /app
 RUN mkdir -p $APP_HOME
