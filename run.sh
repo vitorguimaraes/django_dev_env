@@ -57,6 +57,7 @@ sudo mv $(pwd) $new_project_path
 
 sudo mkdir scripts
 sudo mv dev.sh scripts/
+sudo mv settings.py core/
 
 # give owner files to user
 sudo chown -R $USER *
