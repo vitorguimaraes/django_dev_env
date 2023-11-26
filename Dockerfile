@@ -4,7 +4,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apk add --no-cache make && \
-    apk add build-base libpq-dev 
+    apk add build-base libpq-dev && \
+    pip install --upgrade pip
 
 ENV APP_HOME /app
 RUN mkdir -p $APP_HOME
