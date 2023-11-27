@@ -3,10 +3,13 @@ server:
 
 app:
 	sh -c "django-admin startapp $(filter-out $@,$(MAKECMDGOALS))" 
+	touch $(filter-out $@,$(MAKECMDGOALS))/models.py
 	mkdir $(filter-out $@,$(MAKECMDGOALS))/api
 	touch $(filter-out $@,$(MAKECMDGOALS))/api/__init__.py
 	touch $(filter-out $@,$(MAKECMDGOALS))/api/viewsets.py
 	touch $(filter-out $@,$(MAKECMDGOALS))/api/serializers.py
+
+	mv $(filter-out $@,$(MAKECMDGOALS)) apps
 
 migrations:
 	sh -c "python manage.py makemigrations"
