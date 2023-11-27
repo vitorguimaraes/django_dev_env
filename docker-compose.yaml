@@ -41,3 +41,4 @@ networks:
   django_net:
     name: django_net
     driver: bridge
+    external: true
