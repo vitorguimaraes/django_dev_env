@@ -4,7 +4,7 @@ source .env
 
 # delete old git files 
 rm -rf .git
-sudo chmod +x *.sh
+chmod +x *.sh
 
 # check Docker installation
 docker_check=$(whereis docker)
